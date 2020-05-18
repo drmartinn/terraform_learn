@@ -64,17 +64,17 @@ resource "aws_route_table" "r" {
 }
 
 resource "aws_route_table_association" "table_subnet_main" {
-  subnet_id = "${aws_subnet.subnet_main.id}"
+  subnet_id      = "${aws_subnet.subnet_main.id}"
   route_table_id = "${aws_route_table.r.id}"
 }
 
 resource "aws_route_table_association" "table_subnet_main2" {
-  subnet_id = "${aws_subnet.subnet_main2.id}"
+  subnet_id      = "${aws_subnet.subnet_main2.id}"
   route_table_id = "${aws_route_table.r.id}"
 }
 
 resource "aws_route_table_association" "table_subnet_main3" {
-  subnet_id = "${aws_subnet.subnet_main3.id}"
+  subnet_id      = "${aws_subnet.subnet_main3.id}"
   route_table_id = "${aws_route_table.r.id}"
 }
 
