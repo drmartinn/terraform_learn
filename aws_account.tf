@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "${var.region}"
 }
 
 resource "aws_vpc" "main" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = "${var.vpc_cidr}"
   enable_dns_hostnames = true
 
   tags = {
@@ -13,9 +13,9 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "subnet_main" {
   vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = "${var.subnet1_cidr}"
   map_public_ip_on_launch = true
-  availability_zone       = "us-east-2a"
+  availability_zone       = "${var.subnet1_zone}"
 
 
   tags = {
@@ -25,9 +25,9 @@ resource "aws_subnet" "subnet_main" {
 
 resource "aws_subnet" "subnet_main2" {
   vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "10.0.2.0/24"
+  cidr_block              = "${var.subnet2_cidr}"
   map_public_ip_on_launch = true
-  availability_zone       = "us-east-2b"
+  availability_zone       = "${var.subnet2_zone}"
 
   tags = {
     Name = "Subnet Main us-east-2b"
@@ -36,9 +36,9 @@ resource "aws_subnet" "subnet_main2" {
 
 resource "aws_subnet" "subnet_main3" {
   vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "10.0.3.0/24"
+  cidr_block              = "${var.subnet3_cidr}"
   map_public_ip_on_launch = true
-  availability_zone       = "us-east-2c"
+  availability_zone       = "${var.subnet3_zone}"
 
   tags = {
     Name = "Subnet Main us-east-2c"
