@@ -1,0 +1,10 @@
+resource "aws_key_pair" "key_class_basic" {
+  key_name = "class_key_basic"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDdxAR+A5ZoA10UQ5TrVyymnBeaw5g7WXlyEHl2HAqe4vWiNUVQ7b2NmENRkbQyYF4Y6qSXm5SMEdN+8/YIpMQCGjtHQCSXK7Vgod7mv+v2vqjdRgh+XzAxn+DJYXmwd7XdE5PXlu1XhaZ4qb1jef8o/hfoJDK5r6+nzqSrGWXpt3uc6o9zq2GhW/0j8nkjIgpNNAnY0TOA+kn0e2fxkg7mNoyh4xnIqTQU4T4v6iHWY6Kok7w0QsC25AMiYmP8HMFlCbTUJind3dWekzvOj3hXfpRUrxykPGCy6A+tvsJ9RUb52RBxEvm3UneS2vf/D7Z+sdUSCzqIXVsM/oZARtaGZxNqdlBJFtvwfzDnLzluZO4MG/jCEKOjhKq1Tf4EFqG0rW6GQQHTBfgeQ/iLfMBcTfuIHAboi/57r401uFUfW7IcZYaF3+OaRaGfOyXkq1ujPqHi1HHXK1Q9bsS1d1OiyxefYPyz2pHt9FtA6LTKMVZP5XC6y9dZer//DlHMqbcUvJp9ssffAnaY3H0DeDl1r4OpTy52nZv0CUAg+lLmdGA5ea4vRm4fnQvgjF0l9VQYhneyMD/OMjY7APmzd4DTphiscMC12vi/e90iLjs1lGQIdE5xea5HERyxt1Y8uTIqOD8sT+ZW0EfZXR4rMjoXmaohhpLqNbaG4xtz5cHcYw=="
+}
+
+
+resource "aws_key_pair" "key_class_file" {
+  key_name = "class_file"
+  public_key = "${file("class_key.pem.pub")}"
+}
