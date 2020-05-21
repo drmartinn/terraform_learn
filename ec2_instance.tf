@@ -1,7 +1,7 @@
 resource "aws_instance" "server1" {
   ami                         = "${var.ami_id}"
   instance_type               = "t2.micro"
-  count                       = 1
+  count                       = 2
   associate_public_ip_address = true
   subnet_id                   = "${aws_subnet.subnet_main.id}"
   vpc_security_group_ids = [
@@ -12,7 +12,7 @@ resource "aws_instance" "server1" {
   user_data = "${file("userdata.sh")}"
 
   tags = {
-    Name  = "server-1"
+    Name  = "server- ${count.index + 1}"
     Owner = "terraform"
     Env   = "dev"
   }
