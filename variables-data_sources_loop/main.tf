@@ -47,9 +47,3 @@ resource "aws_route_table_association" "public-subnet" {
   subnet_id = "${element(aws_subnet.subnets.*.id, count.index)}"
   route_table_id = "${aws_route_table.web_public_rt.id}"
 }
-
-
-
-
-
-
