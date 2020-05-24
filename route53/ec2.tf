@@ -6,7 +6,7 @@ resource "aws_instance" "server1" {
   associate_public_ip_address = true
   private_ip                  = "192.168.1.10"
   key_name                    = "${aws_key_pair.example_key_name.id}"
-  depends_on                  = ["${aws_internet_gateway.gw}"]
+  depends_on                  = ["aws_internet_gateway.gw"]
   user_data                   = "${file("userdata1.sh")}"
   tags = {
       Name = "server-1"
@@ -22,8 +22,8 @@ resource "aws_instance" "server2" {
   associate_public_ip_address = true
   private_ip                  = "192.168.1.11"
   key_name                    = "${aws_key_pair.example_key_name.id}"
-  depends_on                  = ["${aws_internet_gateway.gw}"]
-  user_data                   = "${file("userdata1.sh")}"
+  depends_on                  = ["aws_internet_gateway.gw"]
+  user_data                   = "${file("userdata2.sh")}"
   tags = {
       Name = "server-2"
       Env = "dev"
