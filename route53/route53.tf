@@ -23,3 +23,12 @@ resource "aws_route53_record" "server2" {
   records = ["${aws_instance.server2.private_ip}"]
 }
 
+resource "aws_route53_record" "main_elb_name" {
+  zone_id = "${aws_route53_zone.dev.zone_id}"
+  name    = "elb.dev.drmartinuser.com"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["${aws_elb.main_elb.dns_name}"]
+}
+
+
