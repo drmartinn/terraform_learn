@@ -4,9 +4,9 @@ resource "aws_db_instance" "default" {
   engine                 = "postgres"
   engine_version         = "10.6"
   instance_class         = "db.t2.micro"
-  name                   = "mydbpostgres"
-  username               = "demouser"
-  password               = "MyPasswordEsSegura!"
+  name                   = "${var.name_db}"
+  username               = "${var.user_db}"
+  password               = "${var.password_db}"
   port                   = 5432
   db_subnet_group_name   = "${aws_db_subnet_group.default.id}"
   vpc_security_group_ids = ["${aws_security_group.instance-bd.id}"]

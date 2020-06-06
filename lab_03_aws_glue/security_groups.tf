@@ -43,16 +43,22 @@ resource "aws_security_group" "instance-bd" {
     cidr_blocks =  ["${var.vpc_cidr}"]
   }
   ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${var.public_subnet_app_cidr}"]
+  }
+  ingress {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = ["${var.vpc_cidr}"]
+    cidr_blocks = ["${var.public_subnet_app_cidr}"]
   }
   egress {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = ["${var.vpc_cidr}"]
+    cidr_blocks = ["${var.public_subnet_app_cidr}"]
   }
   egress {
     from_port   = -1
