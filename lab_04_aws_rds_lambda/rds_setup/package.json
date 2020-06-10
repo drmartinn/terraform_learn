@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "pg": "~> 7.4"
+        "liquibase": "^1.0.1"
     }
 }

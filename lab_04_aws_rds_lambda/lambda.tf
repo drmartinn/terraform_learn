@@ -4,10 +4,6 @@ data "archive_file" "rds_setup_zip" {
   source_dir  = "rds_setup/"
 }
 
-locals {
-  setup_filename = "${substr(data.archive_file.rds_setup_zip.output_path, length(path.cwd) + 1, -1)}"
-}
-
 data "template_file" "sql_script" {
   template = <<SQL
 create database drmartin;

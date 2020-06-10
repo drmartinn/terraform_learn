@@ -1,5 +1,4 @@
-const fs = require('fs'),
-      pg = require('pg');
+const liquibase = require('liquibase');
 
 exports.handler = async (event, context) => {
 
@@ -11,11 +10,13 @@ exports.handler = async (event, context) => {
     port:     5432,
   };
 
-  const pgClient = new pg.Client(credentials);
-
-  await pgClient.connect();
-  var results = await pgClient.query(process.env.SQL_SCRIPT);
-  await pgClient.end();
-
-  console.log(results.map(function(result) { return result.rowCount; }));
+  liquibase({
+    changeLogFile: 'resources/changelog.sql',
+    url: 'jdbc:postgresql://'+credentials.PGENDPONT+'/user',
+    username: credentials.user,
+    password: credentials.password
+  })
+  .run('update', '<action-params>')
+  .then(() => console.log('success'))
+  .catch((err) => console.log('fail', err));
 };
